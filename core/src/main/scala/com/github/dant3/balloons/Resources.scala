@@ -21,6 +21,7 @@ object Resources {
         lazy val balloons = for (index <- 1 to 7) yield img(s"balloon$index.png")
         lazy val hole = img("hole.png")
         lazy val piercer = img("piercer.png")
+        lazy val target = img("target.png")
         lazy val sheet = img("sheet.png")
 
         private[this] def img(fileName: String) = "img/" + fileName

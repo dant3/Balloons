@@ -23,5 +23,6 @@ object Main extends App {
     cfg.height = 480
     cfg.width = 800
     cfg.forceExit = false
+    cfg.resizable = false
     new LwjglApplication(new BalloonsGame, cfg)
 }

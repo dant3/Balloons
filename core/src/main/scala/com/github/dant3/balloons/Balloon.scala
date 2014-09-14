@@ -54,7 +54,7 @@ class Balloon(override var x:Float, override var y: Float) extends Entity with T
     def tryToDestroy(x: Float, y: Float): Boolean = state match {
         case State.Blowing => false
         case State.Normal =>
-            val balloonRectangle = rect
+            val balloonRectangle = squareRect
             val destroyed = balloonRectangle.contains(x, y)
             if (destroyed) {
                 state = State.Blowing
@@ -62,6 +62,12 @@ class Balloon(override var x:Float, override var y: Float) extends Entity with T
                 popSound.play(1.0f)
             }
             destroyed
+    }
+
+    def squareRect = {
+        val myRect = rect
+        myRect.setY(myRect.y + myRect.height - myRect.width)
+        myRect.setHeight(myRect.width)
     }
 
     def isAlive = !isDestroyed
@@ -77,6 +83,7 @@ class Balloon(override var x:Float, override var y: Float) extends Entity with T
         case _ =>    blowAnimation.draw(batch, x, y + texture.getHeight - texture.getWidth, texture.getWidth, texture.getWidth)
     }
 }
+
 
 private object State extends Enumeration {
     type State = Value
